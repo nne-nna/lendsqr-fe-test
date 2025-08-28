@@ -1,0 +1,71 @@
+@use 'variables' as *;
+
+@mixin card {
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: $radius;
+  box-shadow: $shadow;
+}
+@mixin input {
+  border: 1px solid $border;
+  padding: 14px 16px;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 14px;
+  &:focus {
+    outline: none;
+    border-color: $brand;
+    box-shadow: 0 0 0 3px rgba(57,205,204,0.15);
+  }
+}
+@mixin button {
+  background: $brand;
+  border: none;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  &:disabled { opacity: .6; cursor: not-allowed; }
+}
+@mixin container {
+  margin: 0 auto;
+  padding: 24px;
+  
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}
+
+@mixin custom-scrollbar(
+  $width: 4px,
+  $track-bg: transparent,
+  $thumb-bg: #213F7D26,
+  $thumb-hover: #213F7D40,
+  $border-radius: 4px
+) {
+  scrollbar-width: thin;
+  scrollbar-color: $thumb-bg $track-bg;
+
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-bg;
+    border-radius: $border-radius;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: $thumb-hover;
+    }
+  }
+}
+
+@function clamp-fluid($min, $max) {
+  @return clamp(#{$min}, 1rem + 1.5vw, #{$max});
+}

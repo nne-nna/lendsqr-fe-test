@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'avenir-next';
+  src: url('./assets/fonts/avenir-next-bold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap; 
+}
+
+.custom-font {
+  font-family: 'avenir-next', Arial, sans-serif; 
+}

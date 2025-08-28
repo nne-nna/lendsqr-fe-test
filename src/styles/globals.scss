@@ -1,0 +1,71 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'fonts' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: $font;
+  background: $bg;
+  color: $brand-dark;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  @include container;
+}
+
+.btn {
+  @include button;
+}
+
+.input {
+  @include input;
+}
+
+.custom-scrollbar {
+  @include custom-scrollbar;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+
+  &--success {
+    background: rgba(57, 205, 98, 0.1);
+    color: $success;
+  }
+  &--warning {
+    background: rgba(233, 178, 0, 0.1);
+    color: $warning;
+  }
+  &--danger {
+    background: rgba(228, 3, 59, 0.1);
+    color: $danger;
+  }
+  &--muted {
+    background: rgba(84, 95, 125, 0.1);
+    color: $accent;
+  }
+}
+
+.card {
+  @include card;
+}
