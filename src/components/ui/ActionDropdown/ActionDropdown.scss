@@ -1,0 +1,27 @@
+.action-dropdown {
+  position: absolute;
+  top: 100%; 
+  right: 0; 
+  z-index: 1000;
+  width: 180px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: $shadow;
+  padding: 10px 0;
+  transform: translateY(0.5rem); 
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: $accent;
+
+    &:hover {
+      color: $brand;
+    }
+  }
+}

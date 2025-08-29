@@ -1,0 +1,444 @@
+.filter-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid $border;
+  border-radius: 8px;
+  box-shadow: $shadow;
+  z-index: 1000;
+  min-width: 250px;
+  padding: 0;
+  animation: slideDown 0.2s ease-out;
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__header {
+    padding: 16px 16px 0 16px;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 400;
+    color: $accent;
+    margin: 0;
+    letter-spacing: 0.025em;
+  }
+
+  &__body {
+    padding: 5px 16px 16px 16px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid $border;
+    border-radius: 6px;
+    font-size: 14px;
+    color: $accent;
+    background-color: white;
+    transition: all 0.2s ease;
+    margin: 0;
+
+    &:focus {
+      outline: none;
+      border-color: #39cdcc;
+      box-shadow: 0 0 0 3px rgba(57, 205, 204, 0.1);
+    }
+
+    &::placeholder {
+      color: $accent;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    &--date {
+      padding-right: 40px;
+      cursor: pointer;
+      
+      &::placeholder {
+        color: $accent;
+      }
+      
+      &:hover {
+        border-color: #9ca3af;
+      }
+    }
+  }
+
+  &__custom-select {
+    position: relative;
+    width: 100%;
+  }
+
+  &__custom-select-trigger {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid $border;
+    border-radius: 6px;
+    font-size: 14px;
+    color: $accent;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+    user-select: none;
+
+    &:hover {
+      border-color: #9ca3af;
+    }
+
+    &:focus,
+    &--open {
+      outline: none;
+      border-color: #39cdcc;
+      box-shadow: 0 0 0 3px rgba(57, 205, 204, 0.1);
+    }
+  }
+
+  &__custom-select-value {
+    color: $accent;
+    
+    &--placeholder {
+      color: $accent;
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+
+  &__custom-select-arrow {
+    color: $accent;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__custom-select-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid $border;
+    border-radius: 6px;
+    box-shadow: $shadow;
+    z-index: 1001;
+    max-height: 200px;
+    overflow-y: auto;
+    animation: fadeInScale 0.15s ease-out;
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+  }
+
+  &__custom-select-option {
+    padding: 10px 14px;
+    font-size: 14px;
+    color: $accent;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-bottom: 1px solid $border;
+    user-select: none;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: #f8fafc;
+      color: #1f2937;
+    }
+
+    &--selected {
+      background-color: #f0fdfa;
+      color: #39cdcc;
+      font-weight: 500;
+      position: relative;
+
+      &::after {
+        content: '✓';
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #39cdcc;
+        font-weight: bold;
+      }
+
+      &:hover {
+        background-color: #ecfdf5;
+      }
+    }
+
+    &:active {
+      background-color: #e6fffa;
+    }
+  }
+
+  &__date-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  &__date-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: color 0.2s ease;
+  }
+
+  &__calendar {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid $border;
+    border-radius: 8px;
+    box-shadow: $shadow;
+    z-index: 1002;
+    padding: 16px;
+    animation: fadeInScale 0.2s ease-out;
+    min-width: 280px;
+  }
+
+  &__calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__calendar-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 10px;
+    font-size: 18px;
+    color: $accent;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: #f3f4f6;
+      color: $brand-dark;
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__calendar-month {
+    font-size: 16px;
+    font-weight: 600;
+    color: $brand-dark;
+  }
+
+  &__calendar-grid {
+    margin-bottom: 16px;
+  }
+
+  &__calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 8px;
+  }
+
+  &__calendar-weekday {
+    padding: 8px 4px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: $accent;
+    text-transform: uppercase;
+  }
+
+  &__calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+  &__calendar-day {
+    padding: 10px 4px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--available {
+      color: $accent;
+      
+      &:hover {
+        background-color: #f3f4f6;
+        color: $brand-dark;
+      }
+    }
+
+    &--selected {
+      background-color: $brand;
+      color: white;
+      font-weight: 600;
+      
+      &:hover {
+        background-color: #22d3ee;
+      }
+    }
+
+    &:not(&--available) {
+      color: transparent;
+      cursor: default;
+    }
+  }
+
+  &__time-picker {
+    border-top: 1px solid $border;
+    padding-top: 16px;
+  }
+
+  &__time-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: $accent;
+    margin-bottom: 12px;
+  }
+
+  &__time-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  &__time-select {
+    padding: 8px 12px;
+    border: 1px solid $border;
+    border-radius: 6px;
+    font-size: 14px;
+    color: $accent;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 60px;
+
+    &:focus {
+      outline: none;
+      border-color: $border;
+      box-shadow: 0 0 0 2px rgba(57, 205, 204, 0.1);
+    }
+
+    &:hover {
+      border-color: #9ca3af;
+    }
+  }
+
+  &__time-separator {
+    font-size: 16px;
+    font-weight: 600;
+    color: $accent;
+  }
+
+  &__actions {
+    padding: 12px 16px 16px 16px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    border-top: 1px solid #f3f4f6;
+  }
+
+  &__btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    min-width: 70px;
+
+    &--reset {
+      background-color: transparent;
+      color: $accent;
+      border-color: #d1d5db;
+
+      &:hover {
+        background-color: #f9fafb;
+        color: $brand-dark;
+        border-color: $border;
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+
+    &--filter {
+      background-color: $brand;
+      color: white;
+      border-color: $brand;
+
+      &:hover {
+        background-color: #22d3ee;
+        border-color: #22d3ee;
+      }
+
+      &:active {
+        transform: translateY(1px);
+        background-color: #0891b2;
+        border-color: #0891b2;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-dropdown {
+    min-width: 200px;
+    left: auto;
+    right: 0;
+
+    &__custom-select-dropdown {
+      max-height: 150px;
+    }
+  }
+}
