@@ -15,7 +15,7 @@ The project is built with **React + TypeScript + SCSS**, following a component-d
 ---
 
 ## Project Structure
-
+```
 src/
 ├── api/                  # API calls & local caching (e.g., fetchUsers, fetchUserById)
 ├── assets/               # Static resources
@@ -30,7 +30,7 @@ src/
 ├── styles/               # Global and modular SCSS
 ├── types/                # TypeScript type definitions (User, Filter)
 └── tests/                # Unit tests (e.g., Login.test.tsx)
-
+```
 ---
 
 ##  Features
