@@ -17,18 +17,21 @@ The project is built with **React + TypeScript + SCSS**, following a component-d
 ## Project Structure
 
 src/
-│── api/ # API calls & local caching (fetchUsers, fetchUserById, etc.)
-│── assets/ # Static resources (images, icons, fonts)
-│ ├── images/ # Project images
-│ ├── icons/ # UI icons (SVG/PNG)
-│ ├── fonts/ # Custom fonts
-│ └── index.ts # Centralized imports/exports for assets
-│── components/ui/ # Reusable UI components (Pagination, FilterDropdown, StatCard, ActionDropdown)
-│── components/layout/ # Layout components (AppLayout, Sidebar, Navbar)
-│── pages/ # Application pages (Login, Users, UserDetails)
-│── styles/ # Global and modular SCSS
-│── types/ # TypeScript type definitions (User, Filter)
-└── tests/ # Unit tests (e.g., Login.test.tsx)
+├── api/                  # API calls & local caching (e.g., fetchUsers, fetchUserById)
+├── assets/               # Static resources
+│   ├── images/           # Project images
+│   ├── icons/            # UI icons (SVG/PNG)
+│   ├── fonts/            # Custom fonts
+│   └── index.ts          # Centralized imports/exports for assets
+├── components/
+│   ├── ui/               # Reusable UI components (Pagination, FilterDropdown, StatCard, ActionDropdown)
+│   └── layout/           # Layout components (AppLayout, Sidebar, Navbar)
+├── pages/                # Application pages (Login, Users, UserDetails)
+├── styles/               # Global and modular SCSS
+├── types/                # TypeScript type definitions (User, Filter)
+└── tests/                # Unit tests (e.g., Login.test.tsx)
+
+---
 
 ##  Features
 
