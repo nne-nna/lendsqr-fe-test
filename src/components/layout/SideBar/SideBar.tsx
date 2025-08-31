@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { ChevronDown, X } from "lucide-react";
-import "./Sidebar.scss";
+import "./SideBar.scss";
 import {
   auditLogsIcon,
   dashboardIcon,
