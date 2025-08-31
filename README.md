@@ -10,34 +10,35 @@ The project is built with **React + TypeScript + SCSS**, following a component-d
 - **TypeScript** – static typing for reliability and maintainability  
 - **SCSS** – modular and responsive styling  
 - **LocalStorage** – lightweight persistence of users and filters  
-- **Jest + React Testing Library** – for unit testing the login flow  
+- **Jest + React Testing Library** – for testing components and API logic  
 
 ---
 
 ## Project Structure
+
 ```
 src/
-├── api/                  # API calls & local caching (e.g., fetchUsers, fetchUserById)
-├── assets/               # Static resources
-│   ├── images/           # Project images
-│   ├── icons/            # UI icons (SVG/PNG)
-│   ├── fonts/            # Custom fonts
-│   └── index.ts          # Centralized imports/exports for assets
+├── api/ # API calls & local caching (e.g., fetchUsers, fetchUserById)
+├── assets/ # Static resources
+│ ├── images/ # Project images
+│ ├── icons/ # UI icons (SVG/PNG)
+│ ├── fonts/ # Custom fonts
+│ └── index.ts # Centralized imports/exports for assets
 ├── components/
-│   ├── ui/               # Reusable UI components (Pagination, FilterDropdown, StatCard, ActionDropdown)
-│   └── layout/           # Layout components (AppLayout, Sidebar, Navbar)
-├── pages/                # Application pages (Login, Users, UserDetails)
-├── styles/               # Global and modular SCSS
-├── types/                # TypeScript type definitions (User, Filter)
-└── tests/                # Unit tests (e.g., Login.test.tsx)
+│ ├── ui/ # Reusable UI components (Pagination, FilterDropdown, StatCard, ActionDropdown)
+│ └── layout/ # Layout components (AppLayout, Sidebar, Navbar)
+├── pages/ # Application pages (Login, Users, UserDetails)
+├── styles/ # Global and modular SCSS
+├── types/ # TypeScript type definitions (User, Filter)
+└── tests/ # Unit tests (Login.test.tsx, User.test.ts)
 ```
 ---
 
-##  Features
+## Features
 
 ### Authentication
-- Simple login page with validation and error handling
-- Tested using **React Testing Library and Jest** (`Login.test.tsx`)
+- Simple login page with validation and error handling  
+- Tested using **React Testing Library + Jest** (`Login.test.tsx`)  
 
 ### Users Page
 - Displays users in a paginated table  
@@ -87,9 +88,15 @@ src/
   - Validations work (empty fields, wrong credentials)  
   - Navigation happens on successful login  
 
+- **User.test.ts** ensures:  
+  - The mock API returns **500 users**  
+  - Fetching a user by ID returns the correct user  
+
+Together, these tests validate both the **frontend logic** and the **data layer**.  
+
 ---
 
-##  Running the Project
+## Running the Project
 
 ```bash
 # Clone repository
@@ -106,12 +113,3 @@ npm test
 
 # Build for production
 npm run build
-
-Conclusion
-This project demonstrates how I structured and implemented the assessment:
-
-Clean separation of concerns (UI, pages, layout, API, types)
-
-Practical improvements to the given Figma design
-
-A balance of usability, performance, and maintainability
