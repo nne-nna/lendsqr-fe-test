@@ -38,6 +38,7 @@
       font-weight: 400;
     }
     
+    // Updated: Single border line per row with padding from table edges
     tbody tr:not(:last-child)::after {
       content: '';
       position: absolute;
