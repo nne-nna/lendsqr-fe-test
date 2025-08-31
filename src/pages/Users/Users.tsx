@@ -5,7 +5,7 @@ import FilterDropdown from "../../components/ui/FilterDropdown/FilterDropdown";
 import ActionDropdown from "../../components/ui/ActionDropdown/ActionDropdown";
 import { User } from "@/types/User";
 import { FilterOption, UserFilter, FilterVisibility } from "../../types/Filter";
-import "./users.scss";
+import "./Users.scss"
 import StatCard from "../../components/ui/StatCard/StatCard";
 import { ListFilter, MoreVertical } from "lucide-react";
 import { statCard1Icon, statCard2Icon, statCard3Icon, statCard4Icon } from "../../assets";
@@ -163,6 +163,7 @@ const Users = () => {
     setShowFilters((prev) => ({ ...prev, [filterType]: false }));
     setPage(1);
   };
+
 
   const handleResetFilter = (filterType: keyof UserFilter) => {
     setFilter((prev) => ({ ...prev, [filterType]: "" }));
