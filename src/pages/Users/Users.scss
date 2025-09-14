@@ -5,10 +5,11 @@
 }
 
 .users-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
   gap: 16px;
   margin-bottom: 40px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .users-table-container {
@@ -115,6 +116,17 @@
 
 .action-cell {
   position: relative;
+  padding-bottom: 5px;
+}
+
+.action-cell::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  z-index: -1;
 }
 
 .action-trigger {
@@ -127,20 +139,62 @@
   align-items: center;
   border-radius: 4px;
   transition: all 0.2s ease;
+}
 
-  &:hover {
-    color: $brand-dark;
-    background-color: #f9fafb;
-  }
+.action-trigger:hover {
+  color: $brand-dark;
+  background-color: #f9fafb;
+}
 
-  &:active {
-    transform: scale(0.95);
-  }
+.action-trigger:active {
+  transform: scale(0.95);
+}
+
+.action-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid $border;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 120px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+
+.action-cell:hover .action-dropdown {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.action-dropdown a,
+.action-dropdown button {
+  display: block;
+  padding: 8px 16px;
+  text-align: left;
+  color: $accent;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.action-dropdown a:hover,
+.action-dropdown button:hover {
+  background-color: #f8f9fa;
 }
 
 @media (max-width: 768px) {
   .users-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     margin-bottom: 32px;
   }
@@ -173,10 +227,26 @@
       }
     }
   }
+
+  .action-cell {
+    @media (hover: none) {
+      .action-dropdown {
+        display: none;
+      }
+
+      .action-cell--active .action-dropdown {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+  }
 }
 
 @media (max-width: 480px) {
   .users-stats {
+    display: grid;
     grid-template-columns: 1fr;
   }
 

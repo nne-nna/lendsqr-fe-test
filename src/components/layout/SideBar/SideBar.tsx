@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ChevronDown, X } from "lucide-react";
 import "./SideBar.scss";
 import {
@@ -34,6 +34,8 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
+
+  const naviagte = useNavigate();
   return (
     <>
       <aside className={`sidebar ${isOpen ? 'sidebar--open' : ''}`} data-testid="sidebar">

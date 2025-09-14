@@ -17,6 +17,7 @@ const Login = () => {
   const [show, setShow] = useState(false)
   const [error, setError] = useState('')
   const [passwordTouched, setPasswordTouched] = useState(false)
+  
   const navigate = useNavigate()
 
   const validatePassword = (password: string): PasswordValidation => {
@@ -28,7 +29,6 @@ const Login = () => {
       hasSpecialChar: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)
     }
   }
-
 
   const isPasswordValid = (validation: PasswordValidation): boolean => {
     return Object.values(validation).every(Boolean)

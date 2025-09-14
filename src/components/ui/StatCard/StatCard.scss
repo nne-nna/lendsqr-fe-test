@@ -1,5 +1,6 @@
 .stat-card {
   padding: 18px;
+  
   &__title {
     font-size: 14px;
     font-weight: 500;
@@ -9,8 +10,25 @@
     margin-top: 8px;
     color: $accent;
   }
+  
   &__value {
     font-size: 24px;
     font-weight: 600;
+  }
+}
+
+@media (min-width: 769px) {
+  .stat-card {
+    width: 240px;
+    min-width: 240px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .stat-card {
+    width: 100%;
+    min-width: auto;
+    flex-shrink: 1;
   }
 }

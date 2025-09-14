@@ -51,9 +51,8 @@ const Users = () => {
     dateJoined: false,
     status: false,
   });
-  const [activeActionDropdown, setActiveActionDropdown] = useState<
-    number | null
-  >(null);
+  const [hoveredActionDropdown, setHoveredActionDropdown] = useState<number | null>(null);
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -100,11 +99,7 @@ const Users = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
-      if (
-        !target.closest(".table-header") &&
-        !target.closest(".action-dropdown") &&
-        !target.closest("[data-action-trigger]")
-      ) {
+      if (!target.closest(".table-header")) {
         setShowFilters({
           organization: false,
           username: false,
@@ -113,7 +108,6 @@ const Users = () => {
           dateJoined: false,
           status: false,
         });
-        setActiveActionDropdown(null);
       }
     };
 
@@ -164,19 +158,22 @@ const Users = () => {
     setPage(1);
   };
 
-
   const handleResetFilter = (filterType: keyof UserFilter) => {
     setFilter((prev) => ({ ...prev, [filterType]: "" }));
     setPage(1);
   };
 
-  const handleToggleActionDropdown = (userId: number) => {
-    setActiveActionDropdown((prev) => (prev === userId ? null : userId));
+  const handleActionCellMouseEnter = (userId: number) => {
+    setHoveredActionDropdown(userId);
+  };
+
+  const handleActionCellMouseLeave = () => {
+    setHoveredActionDropdown(null);
   };
 
   const handleViewDetails = (userId: number) => {
     navigate(`/users/${userId}`);
-    setActiveActionDropdown(null);
+    setHoveredActionDropdown(null);
   };
 
   const handleBlacklistUser = (userId: number) => {
@@ -185,7 +182,7 @@ const Users = () => {
         user.id === userId ? { ...user, status: "Blacklisted" as const } : user
       )
     );
-    setActiveActionDropdown(null);
+    setHoveredActionDropdown(null);
   };
 
   const handleActivateUser = (userId: number) => {
@@ -194,7 +191,7 @@ const Users = () => {
         user.id === userId ? { ...user, status: "Active" as const } : user
       )
     );
-    setActiveActionDropdown(null);
+    setHoveredActionDropdown(null);
   };
 
   const handleSetInactive = (userId: number) => {
@@ -203,7 +200,7 @@ const Users = () => {
         user.id === userId ? { ...user, status: "Inactive" as const } : user
       )
     );
-    setActiveActionDropdown(null);
+    setHoveredActionDropdown(null);
   };
 
   const handleSetPending = (userId: number) => {
@@ -212,7 +209,7 @@ const Users = () => {
         user.id === userId ? { ...user, status: "Pending" as const } : user
       )
     );
-    setActiveActionDropdown(null);
+    setHoveredActionDropdown(null);
   };
 
   const start = (page - 1) * pageSize;
@@ -419,17 +416,16 @@ const Users = () => {
                   <td>
                     <div
                       className="action-cell"
-                      style={{ position: "relative" }}
+                      onMouseEnter={() => handleActionCellMouseEnter(u.id)}
+                      onMouseLeave={handleActionCellMouseLeave}
                     >
                       <button
-                        data-action-trigger
                         className="action-trigger"
-                        onClick={() => handleToggleActionDropdown(u.id)}
                       >
                         <MoreVertical />
                       </button>
                       <ActionDropdown
-                        isVisible={activeActionDropdown === u.id}
+                        isVisible={hoveredActionDropdown === u.id}
                         userStatus={u.status} 
                         onViewDetails={() => handleViewDetails(u.id)}
                         onBlacklistUser={() => handleBlacklistUser(u.id)}
